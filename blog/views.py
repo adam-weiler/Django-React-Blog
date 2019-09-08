@@ -1,7 +1,7 @@
 from django.http import HttpResponse, HttpResponseRedirect
-# from django.shortcuts import render, redirect
-# from django.urls import reverse
-# from blog.models import * #Importing the classes from models.py file.
+from django.shortcuts import render, redirect
+from django.urls import reverse
+from blog.models import *
 
 
 def root(request): # Redirects to http://localhost:8000/home/
@@ -13,20 +13,20 @@ def root(request): # Redirects to http://localhost:8000/home/
 # #     response = render(request, 'index.html', context)
 # #     return HttpResponse(response)
 
-# def show_all(request):
-#     context = { 'blog_articles': Article.objects.all().order_by('-published_date'), 'blog_topics': Topic.objects.all() } #The - in published_date means order from newest to oldest.
+def show_all(request):
+    context = { 'blog_articles': Article.objects.all().order_by('-published_date'), 'blog_topics': Topic.objects.all() } #The - in published_date means order from newest to oldest.
 
-#     response = render(request, 'articles.html', context)
-#     return HttpResponse(response)
+    response = render(request, 'articles.html', context)
+    return HttpResponse(response)
 
-# def show_article(request, id): #Load a single article page based on id.
-#     article = Article.objects.get(pk=id)
-#     form = CommentForm()
-#     # form.article = article # assoicate the comment to the article somehow
-#     return render(request, 'article.html', {
-#         'article': article, 
-#         'form': form
-#     })
+def show_article(request, id): #Load a single article page based on id.
+    article = Article.objects.get(pk=id)
+    form = CommentForm()
+    # form.article = article # assoicate the comment to the article somehow
+    return render(request, 'article.html', {
+        'article': article, 
+        'form': form
+    })
 
 
 

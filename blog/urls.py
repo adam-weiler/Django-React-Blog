@@ -39,6 +39,8 @@ urlpatterns = [
     # ... the rest of the urlpatterns ...
     # must be catch-all for pushState to work
     # path('', views.root),
-    path('admin/', admin.site.urls),
+    path('admin', admin.site.urls),
+    path('articles/', views.show_all, name='show_all'),
+    path('articles/<int:id>', views.show_article, name='show_article'),
     url(r'^', views.FrontendAppView.as_view())
 ]
