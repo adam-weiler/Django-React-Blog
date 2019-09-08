@@ -13,19 +13,29 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+# from django.contrib import admin
+# from django.urls import path
+# from blog import views
+
+#urlpatterns = [
+#    path('', views.root), #Redirect
+#    path('admin/', admin.site.urls),
+#    # path('home/', home_page),
+#    path('articles/', views.show_all, name='show_all'),
+#    path('articles/<int:id>', views.show_article, name='show_article'), #Dynamic route containing the primary key of the selected article.
+#
+#    path('articles/new', views.new_article, name='new_article'),
+#    path('articles/create', views.create_article, name='create_article'),
+#
+#    path('articles/<int:article_id>/comments/new', views.create_comment, name='create_comment'),
+#]
+
 from django.contrib import admin
-from django.urls import path
-from blog import views
+from django.conf.urls import url
+from . import views
 
 urlpatterns = [
-    path('', views.root), #Redirect
-    path('admin/', admin.site.urls),
-    # path('home/', home_page),
-    path('articles/', views.show_all, name='show_all'),
-    path('articles/<int:id>', views.show_article, name='show_article'), #Dynamic route containing the primary key of the selected article.
-
-    path('articles/new', views.new_article, name='new_article'),
-    path('articles/create', views.create_article, name='create_article'),
-
-    path('articles/<int:article_id>/comments/new', views.create_comment, name='create_comment'),
+    # ... the rest of the urlpatterns ...
+    # must be catch-all for pushState to work
+    url(r'^', views.FrontendAppView.as_view())
 ]
