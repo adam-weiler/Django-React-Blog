@@ -1,11 +1,11 @@
-# from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseRedirect
 # from django.shortcuts import render, redirect
 # from django.urls import reverse
 # from blog.models import * #Importing the classes from models.py file.
 
 
-# def root(request): # Redirects to http://localhost:8000/home/
-#     return HttpResponseRedirect('/home')
+def root(request): # Redirects to http://localhost:8000/home/
+    return HttpResponseRedirect('/home')
 
 # # def home_page(request): # http://localhost:8000/home/
 # #     context = { 'blog_articles': Article.objects.all().order_by('-published_date'), 'blog_topics': Topic.objects.all() } #The - in published_date means order from newest to oldest.
